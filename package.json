@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "dev": "tsx watch --ignore node_modules --ignore dist src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.ts"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
