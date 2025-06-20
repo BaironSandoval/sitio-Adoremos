@@ -1,0 +1,22 @@
+# Node modules
+node_modules
+
+# Build
+dist
+build
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# TS cache
+*.tsbuildinfo
+
+# MacOS
+.DS_Store
+
+# Visual Studio Code
+.vscode
