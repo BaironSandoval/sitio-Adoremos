@@ -1,6 +1,6 @@
 import { Router, Request } from "express";
 import type multer from "multer";
-import upload from "../middleware/upload";
+import upload from "../middleware/upload.js";
 
 // Extiende la interfaz Request para incluir 'file'
 declare global {

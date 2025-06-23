@@ -1,5 +1,5 @@
 import express from 'express';
-import { protect } from "../middleware/authMiddleware";
+import { protect } from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 // Ruta protegida para verificar sesión del admin
