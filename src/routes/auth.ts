@@ -1,9 +1,13 @@
-import express from 'express';
-import { login } from '../controllers/authController';
-const router = express.Router();
-// Ruta para iniciar sesión
-router.post('/login', (req, res, next) => {
-  Promise.resolve(login(req, res)).catch(next);
+import { Router, Request, Response, NextFunction } from "express";
+import { loginAdmin, registerAdmin } from "../controllers/authController";
+
+const router = Router();
+
+router.post("/login", (req: Request, res: Response) => {
+  loginAdmin(req, res);
+});
+router.post("/register", (req: Request, res: Response) => {
+  registerAdmin(req, res);
 });
 
 export default router;
