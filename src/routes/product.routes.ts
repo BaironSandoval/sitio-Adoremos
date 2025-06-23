@@ -1,23 +1,9 @@
-import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import { Router } from "express";
+import { createProduct } from "../controllers/productController.js";
+import { protect } from "../middleware/authMiddleware.js";
 
-const verifyToken = (req: Request, res: Response, next: NextFunction): void => {
-  const authHeader = req.headers.authorization;
+const router = Router();
 
-  if (!authHeader?.startsWith("Bearer ")) {
-    res.status(401).json({ message: "No autorizado" });
-    return; // ✅ importante
-  }
+router.post("/", protect, createProduct); // <-- esta línea maneja POST /api/products
 
-  const token = authHeader.split(" ")[1];
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!);
-    (req as any).user = decoded;
-    next();
-  } catch {
-    res.status(403).json({ message: "Token inválido" });
-    return; // ✅ importante
-  }
-};
-export default verifyToken;
+export default router;
