@@ -14,6 +14,7 @@ declare global {
 const router = Router();
 
 router.post("/", upload.single("image"), (req, res) => {
+  console.log("FILE:", req.file);
   if (!req.file) {
     res.status(400).json({ message: "No se subió ninguna imagen" });
     return; // ✅ importante para el tipado de Express
