@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import BlogPost from '../models/BlogPost';
+import BlogPost from '../models/BlogPost.js';
 
 export const getAllPosts = async (_: Request, res: Response) => {
   const posts = await BlogPost.find();
