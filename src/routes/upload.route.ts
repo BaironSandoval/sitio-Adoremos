@@ -20,6 +20,12 @@ router.post("/", upload.single("image"), async (req: Request, res: Response): Pr
       return;
     }
 
+    console.log("📸 Imagen recibida:", {
+      originalname: req.file.originalname,
+      mimetype: req.file.mimetype,
+      size: req.file.size,
+    });
+
     const result = await new Promise((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
