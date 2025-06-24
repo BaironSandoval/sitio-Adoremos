@@ -1,6 +1,6 @@
 import multer from "multer";
-import { storage } from "../utils/cloudinary.js";
 
-const upload = multer({ storage }); // CloudinaryStorage ya sube la imagen
+const memoryStorage = multer.memoryStorage(); // le ponemos otro nombre por claridad
+const upload = multer({ storage: memoryStorage });
 
 export default upload;

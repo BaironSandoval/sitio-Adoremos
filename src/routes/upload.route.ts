@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { v2 as cloudinary } from "cloudinary";
+import { cloudinary } from "../utils/cloudinary.js";
 import upload from "../middleware/upload.js";
 
 // Extiende la interfaz Request para incluir 'file'
