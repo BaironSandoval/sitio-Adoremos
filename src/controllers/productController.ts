@@ -17,6 +17,22 @@ export const createProduct = async (req: Request, res: Response) => {
   res.status(201).json(newProduct);
 };
 
+// GET /api/products/:id
+export const getProductById = async (req: Request, res: Response) => {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: "Error al obtener el producto" });
+  }
+};
+
+
 // PUT /api/products/:id
 export const updateProduct = async (req: Request, res: Response) => {
   try {

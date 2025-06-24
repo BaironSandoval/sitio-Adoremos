@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createProduct, getProducts, updateProduct, deleteProduct } from "../controllers/productController.js";
+import { createProduct, getProducts, updateProduct, deleteProduct, getProductById} from "../controllers/productController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 const router = Router();
@@ -8,6 +8,7 @@ const asyncHandler = (fn: any) => (req: any, res: any, next: any) => {
 };
 
 router.get("/", asyncHandler(getProducts));
+router.get("/:id", asyncHandler(getProductById));
 router.post("/", protect, asyncHandler(createProduct)); // <-- esta línea maneja POST /api/products
 router.put("/:id", protect, asyncHandler(updateProduct));
 router.delete("/:id", protect, asyncHandler(deleteProduct));
