@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import BlogPost from '../models/BlogPost.js';
 
 export const getAllPosts = async (_: Request, res: Response) => {
-  const posts = await BlogPost.find();
+  const posts = await BlogPost.find().sort({ createdAt: -1 });
   res.json(posts);
 };
 
