@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Promotion from "../models/Promotion";
+import Promotion from "../models/Promotion.js";
 
 // Obtener todas las promociones
 export const getPromotions = async (_req: Request, res: Response) => {

@@ -17,8 +17,8 @@ const asyncHandler = (fn: any) => (req: any, res: any, next: any) => {
 // Ruta base: /api/promotions
 router.get("/", asyncHandler(getPromotions));
 router.get("/:id", asyncHandler(getPromotionById));
-router.post("/", asyncHandler(createPromotion));
-router.put("/:id", asyncHandler(updatePromotion));
-router.delete("/:id", asyncHandler(deletePromotion));
+router.post("/", protect, asyncHandler(createPromotion));
+router.put("/:id", protect, asyncHandler(updatePromotion));
+router.delete("/:id", protect, asyncHandler(deletePromotion));
 
 export default router;
