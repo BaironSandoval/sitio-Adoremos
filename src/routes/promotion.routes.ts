@@ -5,7 +5,7 @@ import {
   createPromotion,
   updatePromotion,
   deletePromotion,
-} from "../controllers/promotionController";
+} from "../controllers/promotionController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
