@@ -6,6 +6,7 @@ import productRoutes from "./routes/product.routes.js";
 import authRoutes from "./routes/auth.js";
 import uploadRoutes from "./routes/upload.route.js";
 import blogRoutes from "./routes/blog.routes.js";
+import promotionRoutes from "./routes/promotion.routes.js";
 
 dotenv.config();
 connectDB();
@@ -20,6 +21,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/blog", blogRoutes);
+app.use("/api/promotions", promotionRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`));
