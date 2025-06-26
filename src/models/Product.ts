@@ -4,8 +4,8 @@ export interface IProduct extends Document {
   name: string;
   price: number;
   quantity: number;
-  images?: string[]; // ← CAMBIADO
   description?: string;
+  images?: string[]; // ← CAMBIADO
 }
 
 const ProductSchema: Schema<IProduct> = new Schema(
@@ -13,8 +13,8 @@ const ProductSchema: Schema<IProduct> = new Schema(
     name: { type: String, required: true },
     price: { type: Number },
     quantity: { type: Number },
-    images: [{ type: String }], // ← CAMBIADO
     description: { type: String },
+    images: { type: [String], default: [] },
   },
   { timestamps: true }
 );

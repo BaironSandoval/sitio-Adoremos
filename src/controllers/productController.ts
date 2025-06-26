@@ -9,11 +9,21 @@ export const getProducts = async (_req: Request, res: Response) => {
 
 // POST /api/products
 export const createProduct = async (req: Request, res: Response) => {
-  const { name, price, quantity, image } = req.body;
+  const { name, price, quantity, description, images } = req.body;
 
-  const newProduct = new Product({ name, price, quantity, image });
+  if (!Array.isArray(images)) {
+    return res.status(400).json({ message: "El campo 'images' debe ser un arreglo." });
+  }
+
+  const newProduct = new Product({
+    name,
+    price,
+    quantity,
+    description,
+    images,
+  });
+
   await newProduct.save();
-
   res.status(201).json(newProduct);
 };
 
@@ -32,16 +42,15 @@ export const getProductById = async (req: Request, res: Response) => {
   }
 };
 
-
 // PUT /api/products/:id
 export const updateProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { name, price, quantity, image } = req.body;
+    const { name, price, quantity, description, images } = req.body;
 
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
-      { name, price, quantity, image },
+      { name, price, quantity, description, images },
       { new: true }
     );
 
@@ -54,6 +63,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error al actualizar el producto" });
   }
 };
+
 // DELETE /api/products/:id
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
@@ -70,4 +80,3 @@ export const deleteProduct = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error al eliminar el producto" });
   }
 };
-
