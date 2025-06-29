@@ -9,7 +9,7 @@ export const getProducts = async (_req: Request, res: Response) => {
 
 // POST /api/products
 export const createProduct = async (req: Request, res: Response) => {
-  const { name, price, quantity, description, images } = req.body;
+  const { name, price, quantity, description, category, images } = req.body;
 
   if (!Array.isArray(images)) {
     return res.status(400).json({ message: "El campo 'images' debe ser un arreglo." });
@@ -20,6 +20,7 @@ export const createProduct = async (req: Request, res: Response) => {
     price,
     quantity,
     description,
+    category,
     images,
   });
 
@@ -46,11 +47,11 @@ export const getProductById = async (req: Request, res: Response) => {
 export const updateProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { name, price, quantity, description, images } = req.body;
+    const { name, price, quantity, description, category, images } = req.body;
 
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
-      { name, price, quantity, description, images },
+      { name, price, quantity, description, category, images },
       { new: true }
     );
 
